@@ -1,0 +1,56 @@
+House Prices Prediction Analysis Report
+
+Introduction
+In this report, we aim to examine the correlation between several macroeconomic indicators and house prices over the past two decades (2000-2023) in the US. Our analysis involves understanding data distribution, the relationship between variables, and using various regression techniques to predict house prices.
+
+Data Collection and Preprocessing
+1. Data Importing and Merging
+Five datasets were imported:
+
+Unemployment rate (unemployment)
+Income (income)
+House starts (house_starts)
+Consumer Confidence Index (consumer_confidence)
+House Prices (house_prices)
+The data was merged sequentially on the 'DATE' column, ensuring there were no duplicates.
+
+2. Data Cleaning
+A preliminary check revealed missing values in the data. The missing values were linearly interpolated to fill the gaps. Subsequently, the 'DATE' column, initially an object type, was converted to a datetime type.
+
+3. Data Renaming
+To enhance clarity, 'CSUSHPISA' was renamed to 'HousePrices'.
+
+Exploratory Data Analysis (EDA)
+1. Distribution Analysis
+Histograms were plotted for house prices and other numerical variables ('UNRATE', 'INCOME', 'HOUST', 'UMCSENT'). This allowed us to examine the distribution and skewness of each variable.
+
+2. Relationship Analysis
+Scatter plots between house prices and other numerical variables showcased their relationship, revealing whether there was a potential linear relationship suitable for linear regression.
+
+3. Correlation Analysis
+A heatmap of the correlation matrix illustrated the strength and direction of relationships between variables. This is crucial for linear regression as multicollinearity (high correlation between independent variables) can distort the results.
+
+4. Time Series Analysis
+Line plots against 'DATE' showcased the trends of house prices and other variables over the past 23 years.
+
+Model Building
+1. Data Splitting
+The 'DATE' column was dropped since it's not a feature for prediction. The data was then split into training and testing datasets (80% training and 20% testing).
+
+2. Linear Regression Model
+A linear regression model was constructed to predict house prices. On evaluation, the model produced an R-squared value of 0.82, meaning it explains 82% of the variability in the data. It also gave a mean absolute error (MAE) of 16.69 and a root mean squared error (RMSE) of 21.00.
+
+3. Random Forest Regressor
+The Random Forest model was implemented to check if a non-linear model would fit the data better. The mean squared error (MSE) was found to be 45.65, and the R-squared value was 0.98.
+
+4. XGBoost Regressor
+XGBoost, a gradient boosting algorithm, was also employed. The model's mean squared error was 109.51, with an R-squared value of 0.95.
+
+Conclusion
+From the exploratory data analysis, it was evident that there are relationships between macroeconomic indicators and house prices. Among the models used, Random Forest had the highest R-squared value of 0.98, making it the most effective at explaining the variability in house prices among the models tested.
+
+While these models provide a foundation for understanding the relationships and making predictions, further refinements, including feature engineering and hyperparameter tuning, may enhance the prediction accuracy.
+
+
+
+
